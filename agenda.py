@@ -18,6 +18,18 @@ def ver_contatos(contatos):
     print(f"{indice}. {nome_contato} - {telefone_contato} - {email_contato}")
   return
 
+def atualizar_contato(contatos, indice_contato, novo_nome_contato, novo_telefone_contato, novo_email_contato):
+  indice_contato_ajustado = int(indice_contato) - 1
+  if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+    contato = contatos[indice_contato_ajustado]
+    contato["nome"] = novo_nome_contato
+    contato["telefone"] = novo_telefone_contato
+    contato["email"] = novo_email_contato
+    print("Contato atualizado com sucesso!")
+  else:
+    print("Contato não encontrado.")
+  return
+
 contatos = []
 
 while True:
@@ -39,7 +51,13 @@ while True:
     adicionar_contato(contatos, nome_novo_contato, telefone_novo_contato, email_novo_contato)
   elif escolha == "2":
     ver_contatos(contatos)
+  elif escolha == "3":
+    ver_contatos(contatos)
+    indice_contato = input("Digite o numero do contato que deseja editar: ")
+    novo_nome_contato = input("Digite o novo nome do contato: ")
+    novo_telefone_contato = input("Digite o novo telefone do contato: ")
+    novo_email_contato = input("Digite o novo email do contato: ")
+    atualizar_contato(contatos, indice_contato, novo_nome_contato, novo_telefone_contato, novo_email_contato)
   elif escolha == "7":
+    print("Programa finalizado.")
     break
-
-  print("Programa finalizado.")
