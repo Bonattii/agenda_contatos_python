@@ -41,6 +41,16 @@ def toggle_favorite(contatos, indice_contato):
     print("Contato não encontrado.")
   return
 
+def ver_contatos_favoritos(contatos):
+  print("\nLista de contatos favoritos:")
+  for indice, contato in enumerate(contatos, start=1):
+    if contato["favorito"]:
+      nome_contato = contato["nome"]
+      telefone_contato = contato["telefone"]
+      email_contato = contato["email"]
+      print(f"{indice}. {nome_contato} - {telefone_contato} - {email_contato}")
+  return
+
 contatos = []
 
 while True:
@@ -73,6 +83,8 @@ while True:
     ver_contatos(contatos)
     indice_contato = input("Digite o numero do contato que deseja marcar/desmarcar como favorito: ")
     toggle_favorite(contatos, indice_contato)
+  elif escolha == "5":
+    ver_contatos_favoritos(contatos)
   elif escolha == "7":
     print("Programa finalizado.")
     break
