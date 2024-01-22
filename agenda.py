@@ -12,10 +12,11 @@ def adicionar_contato(contatos, nome_novo_contato, telefone_novo_contato, email_
 def ver_contatos(contatos):
   print("\nLista de contatos:")
   for indice, contato in enumerate(contatos, start=1):
+    status = "✓" if contato["favorito"] else " "
     nome_contato = contato["nome"]
     telefone_contato = contato["telefone"]
     email_contato = contato["email"]
-    print(f"{indice}. {nome_contato} - {telefone_contato} - {email_contato}")
+    print(f"{indice}. {nome_contato} - {telefone_contato} - {email_contato} - favorito[{status}]")
   return
 
 def atualizar_contato(contatos, indice_contato, novo_nome_contato, novo_telefone_contato, novo_email_contato):
