@@ -51,6 +51,16 @@ def ver_contatos_favoritos(contatos):
       print(f"{indice}. {nome_contato} - {telefone_contato} - {email_contato}")
   return
 
+def deletar_contato(contatos, indice_contato):
+  indice_contato_ajustado = int(indice_contato) - 1
+  if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+    contato = contatos[indice_contato_ajustado]
+    contatos.remove(contato)
+    print("Contato deletado com sucesso!")
+  else:
+    print("Contato não encontrado.")
+  return
+
 contatos = []
 
 while True:
@@ -85,6 +95,10 @@ while True:
     toggle_favorite(contatos, indice_contato)
   elif escolha == "5":
     ver_contatos_favoritos(contatos)
+  elif escolha == "6":
+    ver_contatos(contatos)
+    indice_contato = input("Digite o numero do contato que deseja deletar: ")
+    deletar_contato(contatos, indice_contato)
   elif escolha == "7":
     print("Programa finalizado.")
     break
