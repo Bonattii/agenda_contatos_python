@@ -30,6 +30,16 @@ def atualizar_contato(contatos, indice_contato, novo_nome_contato, novo_telefone
     print("Contato não encontrado.")
   return
 
+def toggle_favorite(contatos, indice_contato):
+  indice_contato_ajustado = int(indice_contato) - 1
+  if indice_contato_ajustado >= 0 and indice_contato_ajustado < len(contatos):
+    contato = contatos[indice_contato_ajustado]
+    contato["favorito"] = not contato["favorito"]
+    print("Contato atualizado com sucesso!")
+  else:
+    print("Contato não encontrado.")
+  return
+
 contatos = []
 
 while True:
@@ -58,6 +68,10 @@ while True:
     novo_telefone_contato = input("Digite o novo telefone do contato: ")
     novo_email_contato = input("Digite o novo email do contato: ")
     atualizar_contato(contatos, indice_contato, novo_nome_contato, novo_telefone_contato, novo_email_contato)
+  elif escolha == "4":
+    ver_contatos(contatos)
+    indice_contato = input("Digite o numero do contato que deseja marcar/desmarcar como favorito: ")
+    toggle_favorite(contatos, indice_contato)
   elif escolha == "7":
     print("Programa finalizado.")
     break
